@@ -1,0 +1,42 @@
+Github Links for Awesome OAuth Strategies We Will Be Using: 
+
+Google OAuth2.0: https://github.com/jaredhanson/passport-google-oauth2
+Twitter OAuth2.0: https://github.com/hewmen/passport-twitter-oauth2
+Github OAuth2.0: https://github.com/jaredhanson/passport-github
+
+
+
+Dependencies (Required In Produciton):
+
+bcryptjs -> Password Hashing
+cors -> Cross Origin Security
+dotenv -> Access Env Variables
+express -> Backend Library 
+express-session -> "In Memory" Sessions Handled With Express, Passport Requires This
+mongoose -> ORM To Access Resources For the MongoDB Database
+passport -> Library For Easy Secure Authentication of Users Using Express
+passport-google-oauth20 -> The Google Strategy for Passport
+passport-local -> Local Authentication Strategy with Passport
+passport-twitter-oauth2 -> Twitter Authentication Strategy with Passport 
+passport-github -> Github Authentication With Passport
+
+Dev Dependencies (Only Needed when Writing the Code [Not Required In Production])
+
+@types/bcryptjs
+@types/cors
+@types/express 
+@types/express-session 
+@types/mongoose 
+@types/passport 
+@types/passport-local
+@types/passport-twitter-oauth2
+@types/passport-google-oauth20
+@types/passport-github
+
+👆 These Packages are Just Typescript Support For Dependencies (So we can use the packages type definitions)
+
+nodemon -> To Restart Server on Every Change When Building the Application
+typescript -> Typescript Obviously is Necessary
+tsc -> Compile to Javascript (Build Javascript Code, For Production)
+ts-node -> Compile to Javascript & Run on the Fly (For Development)
+
