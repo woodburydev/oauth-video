@@ -82,7 +82,7 @@ passport.use(new TwitterStrategy({
   consumerSecret: `${process.env.TWITTER_CLIENT_SECRET}`,
   callbackURL: "/auth/twitter/callback"
 },
-function (_: any, __: any, profile: any, cb: any) {
+  function (_: any, __: any, profile: any, cb: any) {
 
     User.findOne({ twitterId: profile.id }, async (err: Error, doc: IMongoDBUser) => {
 
@@ -114,7 +114,7 @@ passport.use(new GitHubStrategy({
   clientSecret: `${process.env.GITHUB_CLIENT_SECRET}`,
   callbackURL: "/auth/github/callback"
 },
-function (_: any, __: any, profile: any, cb: any) {
+  function (_: any, __: any, profile: any, cb: any) {
 
     User.findOne({ githubId: profile.id }, async (err: Error, doc: IMongoDBUser) => {
 
@@ -144,7 +144,7 @@ app.get('/auth/google',
   passport.authenticate('google', { scope: ['profile'] }));
 
 app.get('/auth/google/callback',
-  passport.authenticate('google', { failureRedirect: '/login' }),
+  passport.authenticate('google', { failureRedirect: '/login', session: true } ),
   function (req, res) {
     // Successful authentication, redirect home.
     res.redirect('http://localhost:3000');
@@ -154,7 +154,7 @@ app.get('/auth/google/callback',
 app.get('/auth/twitter', passport.authenticate('twitter'));
 
 app.get('/auth/twitter/callback',
-  passport.authenticate('twitter', { failureRedirect: '/login' }),
+  passport.authenticate('twitter', { failureRedirect: '/login', session: true }),
   function (req, res) {
     // Successful authentication, redirect home.
     res.redirect('http://localhost:3000');
@@ -164,8 +164,9 @@ app.get('/auth/twitter/callback',
 app.get('/auth/github', passport.authenticate('github'));
 
 app.get('/auth/github/callback',
-  passport.authenticate('github', { failureRedirect: '/login' }),
+  passport.authenticate('github', { failureRedirect: '/login', session: true }),
   function (req, res) {
+    // Successful authentication, redirect home.
     res.redirect('http://localhost:3000');
   });
 
@@ -179,7 +180,7 @@ app.get("/getuser", (req, res) => {
   res.send(req.user);
 })
 
-app.get("/auth/logout", (req,res) => {
+app.get("/auth/logout", (req, res) => {
   if (req.user) {
     req.logout();
     res.send("done")
