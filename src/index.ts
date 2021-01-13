@@ -80,7 +80,7 @@ passport.use(new GoogleStrategy({
 passport.use(new TwitterStrategy({
   consumerKey: `${process.env.TWITTER_CLIENT_ID}`,
   consumerSecret: `${process.env.TWITTER_CLIENT_SECRET}`,
-  callbackURL: "http://localhost:4000/auth/twitter/callback"
+  callbackURL: "/auth/twitter/callback"
 },
 function (_: any, __: any, profile: any, cb: any) {
 
@@ -112,7 +112,7 @@ function (_: any, __: any, profile: any, cb: any) {
 passport.use(new GitHubStrategy({
   clientID: `${process.env.GITHUB_CLIENT_ID}`,
   clientSecret: `${process.env.GITHUB_CLIENT_SECRET}`,
-  callbackURL: "http://localhost:4000/auth/github/callback"
+  callbackURL: "/auth/github/callback"
 },
 function (_: any, __: any, profile: any, cb: any) {
 
@@ -186,6 +186,6 @@ app.get("/auth/logout", (req,res) => {
   }
 })
 
-app.listen(4000, () => {
+app.listen(process.env.PORT || 4000, () => {
   console.log("Server Starrted");
 })
