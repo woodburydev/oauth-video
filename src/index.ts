@@ -29,6 +29,7 @@ app.use(
   session({
     secret: "secretcode",
     resave: true,
+    proxy: true,
     saveUninitialized: true,
     cookie: {
       path: "/",
