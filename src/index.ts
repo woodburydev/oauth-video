@@ -24,7 +24,7 @@ mongoose.connect(`${process.env.START_MONGODB}${process.env.MONGODB_USERNAME}:${
 
 // Middleware
 app.use(express.json());
-app.use(cors({ origin: "http://woodburydev-front-end.herokuapp.com", credentials: true }))
+app.use(cors({ origin: "https://woodburydev-front-end.herokuapp.com", credentials: true }))
 app.use(
   session({
     secret: "secretcode",
@@ -35,7 +35,7 @@ app.use(
     cookie: {
       path: "/",
       maxAge: 1000 * 60 * 24,
-      domain: "http://woodburydev-front-end.herokuapp.com"
+      domain: "https://woodburydev-front-end.herokuapp.com"
     }
   })
 );
@@ -155,7 +155,7 @@ app.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/login', session: true } ),
   function (req, res) {
     // Successful authentication, redirect home.
-    res.redirect('http://woodburydev-front-end.herokuapp.com');
+    res.redirect('https://woodburydev-front-end.herokuapp.com');
   });
 
 
@@ -165,7 +165,7 @@ app.get('/auth/twitter/callback',
   passport.authenticate('twitter', { failureRedirect: '/login', session: true }),
   function (req, res) {
     // Successful authentication, redirect home.
-    res.redirect('http://woodburydev-front-end.herokuapp.com');
+    res.redirect('https://woodburydev-front-end.herokuapp.com');
   });
 
 
@@ -175,7 +175,7 @@ app.get('/auth/github/callback',
   passport.authenticate('github', { failureRedirect: '/login', session: true }),
   function (req, res) {
     // Successful authentication, redirect home.
-    res.redirect('http://woodburydev-front-end.herokuapp.com');
+    res.redirect('https://woodburydev-front-end.herokuapp.com');
   });
 
 
