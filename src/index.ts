@@ -25,11 +25,17 @@ mongoose.connect(`${process.env.START_MONGODB}${process.env.MONGODB_USERNAME}:${
 // Middleware
 app.use(express.json());
 app.use(cors({ origin: "http://localhost:3000", credentials: true }))
+
 app.use(
   session({
     secret: "secretcode",
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: {
+      secure: true,
+      sameSite: "none",
+      maxAge: 1000 * 60 * 60 * 24 * 7 // expires after one week
+    }
   })
 );
 app.use(passport.initialize());
