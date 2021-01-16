@@ -24,12 +24,18 @@ mongoose.connect(`${process.env.START_MONGODB}${process.env.MONGODB_USERNAME}:${
 
 // Middleware
 app.use(express.json());
-app.use(cors({ origin: "https://woodburydev-front-end.herokuapp.com", credentials: true }))
+app.use(cors({ origin: "https://woodburydev.xyz", credentials: true }))
+app.set('trust proxy', 1) // Also didn't make any difference for me either using it or not
 app.use(
   session({
     secret: "secretcode",
     resave: true,
     saveUninitialized: true,
+    cookie: {
+      sameSite: "none",
+      secure: true,
+      maxAge: 24 * 24 * 24 * 24 * 24
+    }
   })
 );
 app.use(passport.initialize());
@@ -148,7 +154,7 @@ app.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/login', session: true } ),
   function (req, res) {
     // Successful authentication, redirect home.
-    res.redirect('https://woodburydev-front-end.herokuapp.com');
+    res.redirect('https://woodburydev.xyz');
   });
 
 
@@ -158,7 +164,7 @@ app.get('/auth/twitter/callback',
   passport.authenticate('twitter', { failureRedirect: '/login', session: true }),
   function (req, res) {
     // Successful authentication, redirect home.
-    res.redirect('https://woodburydev-front-end.herokuapp.com');
+    res.redirect('https://woodburydev.xyz');
   });
 
 
@@ -168,7 +174,7 @@ app.get('/auth/github/callback',
   passport.authenticate('github', { failureRedirect: '/login', session: true }),
   function (req, res) {
     // Successful authentication, redirect home.
-    res.redirect('https://woodburydev-front-end.herokuapp.com');
+    res.redirect('hhttps://woodburydev.xyz');
   });
 
 
