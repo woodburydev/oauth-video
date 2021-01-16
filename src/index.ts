@@ -29,14 +29,7 @@ app.use(
   session({
     secret: "secretcode",
     resave: true,
-    proxy: true,
-
     saveUninitialized: true,
-    cookie: {
-      path: "/",
-      maxAge: 1000 * 60 * 24,
-      domain: "https://woodburydev-front-end.herokuapp.com"
-    }
   })
 );
 app.use(passport.initialize());
