@@ -30,12 +30,7 @@ app.use(
   session({
     secret: "secretcode",
     resave: true,
-    saveUninitialized: true,
-    cookie: {
-      sameSite: "none",
-      secure: true,
-      maxAge: 1000 * 60 * 60 * 24 * 7 // One Week
-    }
+    saveUninitialized: true
   })
 );
 app.use(passport.initialize());
@@ -187,10 +182,10 @@ app.get("/getuser", (req, res) => {
   res.send(req.user);
 })
 
-app.get("/auth/logout", (req, res) => {
+app.get("/logout", (req,res) => {
   if (req.user) {
     req.logout();
-    res.send("done")
+    res.send("done");
   }
 })
 
