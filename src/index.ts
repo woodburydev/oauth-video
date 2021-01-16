@@ -31,11 +31,6 @@ app.use(
     secret: "secretcode",
     resave: true,
     saveUninitialized: true,
-    cookie: {
-      sameSite: "none",
-      secure: true,
-      maxAge: 1000 * 64 * 64
-    }
   })
 );
 app.use(passport.initialize());
