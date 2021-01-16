@@ -25,17 +25,11 @@ mongoose.connect(`${process.env.START_MONGODB}${process.env.MONGODB_USERNAME}:${
 // Middleware
 app.use(express.json());
 app.use(cors({ origin: "http://localhost:3000", credentials: true }))
-app.set('trust proxy', 1) // Also didn't make any difference for me either using it or not
 app.use(
   session({
     secret: "secretcode",
     resave: true,
-    saveUninitialized: true,
-    cookie: {
-      sameSite: "none",
-      secure: true,
-      maxAge: 1000 * 64 * 64
-    }
+    saveUninitialized: true
   })
 );
 app.use(passport.initialize());
