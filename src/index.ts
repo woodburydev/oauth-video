@@ -10,6 +10,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const TwitterStrategy = require('passport-twitter').Strategy;
 const GitHubStrategy = require('passport-github').Strategy;
 
+
 dotenv.config();
 
 const app = express();
@@ -29,6 +30,11 @@ app.use(
     secret: "secretcode",
     resave: true,
     saveUninitialized: true,
+    cookie: {
+      path: "/",
+      maxAge: 1000 * 60 * 24,
+      domain: "http://localhost:3000"
+    }
   })
 );
 app.use(passport.initialize());
