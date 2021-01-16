@@ -24,7 +24,7 @@ mongoose.connect(`${process.env.START_MONGODB}${process.env.MONGODB_USERNAME}:${
 
 // Middleware
 app.use(express.json());
-app.use(cors({ origin: "https://www.woodburydevelopment.xyz/", credentials: true }))
+app.use(cors({ origin: "https://upbeat-euler-384bbd.netlify.app", credentials: true }))
 app.set('trust proxy', 1) // Also didn't make any difference for me either using it or not
 app.use(
   session({
@@ -154,7 +154,7 @@ app.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/login', session: true } ),
   function (req, res) {
     // Successful authentication, redirect home.
-    res.redirect('https://woodburydevelopment.xyz');
+    res.redirect('https://upbeat-euler-384bbd.netlify.app');
   });
 
 
@@ -164,7 +164,7 @@ app.get('/auth/twitter/callback',
   passport.authenticate('twitter', { failureRedirect: '/login', session: true }),
   function (req, res) {
     // Successful authentication, redirect home.
-    res.redirect('https://woodburydevelopment.xyz');
+    res.redirect('https://upbeat-euler-384bbd.netlify.app');
   });
 
 
@@ -174,7 +174,7 @@ app.get('/auth/github/callback',
   passport.authenticate('github', { failureRedirect: '/login', session: true }),
   function (req, res) {
     // Successful authentication, redirect home.
-    res.redirect('hhttps://woodburydevelopment.xyz');
+    res.redirect('https://upbeat-euler-384bbd.netlify.app');
   });
 
 
