@@ -58,7 +58,7 @@ passport.deserializeUser((id: string, done: any) => {
 passport.use(new GoogleStrategy({
   clientID: `${process.env.GOOGLE_CLIENT_ID}`,
   clientSecret: `${process.env.GOOGLE_CLIENT_SECRET}`,
-  callbackURL: "/auth/google/callback"
+  callbackURL: "https://o-auth-video-backend.herokuapp.com/auth/google/callback"
 },
   function (_: any, __: any, profile: any, cb: any) {
 
@@ -87,7 +87,7 @@ passport.use(new GoogleStrategy({
 passport.use(new TwitterStrategy({
   consumerKey: `${process.env.TWITTER_CLIENT_ID}`,
   consumerSecret: `${process.env.TWITTER_CLIENT_SECRET}`,
-  callbackURL: "/auth/twitter/callback"
+  callbackURL: "https://o-auth-video-backend.herokuapp.com/auth/twitter/callback"
 },
   function (_: any, __: any, profile: any, cb: any) {
 
@@ -119,7 +119,7 @@ passport.use(new TwitterStrategy({
 passport.use(new GitHubStrategy({
   clientID: `${process.env.GITHUB_CLIENT_ID}`,
   clientSecret: `${process.env.GITHUB_CLIENT_SECRET}`,
-  callbackURL: "/auth/github/callback"
+  callbackURL: "https://o-auth-video-backend.herokuapp.com/auth/github/callback"
 },
   function (_: any, __: any, profile: any, cb: any) {
 
