@@ -35,7 +35,7 @@ app.use(
     saveUninitialized: true,
     cookie: {
       sameSite: "none",
-      secure: false,
+      secure: true,
       maxAge: 1000 * 60 * 60 * 24 * 7 // One Week
     }
   }))
@@ -61,7 +61,7 @@ passport.deserializeUser((id: string, done: any) => {
 passport.use(new GoogleStrategy({
   clientID: `${process.env.GOOGLE_CLIENT_ID}`,
   clientSecret: `${process.env.GOOGLE_CLIENT_SECRET}`,
-  callbackURL: "http://o-auth-video-backend.herokuapp.com/auth/google/callback"
+  callbackURL: "/auth/google/callback"
 },
   function (_: any, __: any, profile: any, cb: any) {
 
