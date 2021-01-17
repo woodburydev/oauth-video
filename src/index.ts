@@ -24,7 +24,7 @@ mongoose.connect(`${process.env.START_MONGODB}${process.env.MONGODB_USERNAME}:${
 
 // Middleware
 app.use(express.json());
-app.use(cors({ origin: "http://localhost:3000", credentials: true }))
+app.use(cors({ origin: "https://gallant-hodgkin-fb9c52.netlify.app", credentials: true }))
 
 app.set("trust proxy", 1);
 
@@ -157,7 +157,7 @@ app.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/login', session: true } ),
   function (req, res) {
     // Successful authentication, redirect home.
-    res.redirect('http://localhost:3000');
+    res.redirect('https://gallant-hodgkin-fb9c52.netlify.app');
   });
 
 
@@ -167,7 +167,7 @@ app.get('/auth/twitter/callback',
   passport.authenticate('twitter', { failureRedirect: '/login', session: true }),
   function (req, res) {
     // Successful authentication, redirect home.
-    res.redirect('http://localhost:3000');
+    res.redirect('https://gallant-hodgkin-fb9c52.netlify.app');
   });
 
 
@@ -177,7 +177,7 @@ app.get('/auth/github/callback',
   passport.authenticate('github', { failureRedirect: '/login', session: true }),
   function (req, res) {
     // Successful authentication, redirect home.
-    res.redirect('http://localhost:3000');
+    res.redirect('https://gallant-hodgkin-fb9c52.netlify.app');
   });
 
 
