@@ -10,12 +10,8 @@
         "sourceMap": true,
         "allowJs": true,
         "skipLibCheck": true,
-        "jsx": "react",
         "moduleResolution": "node",
         "rootDir": "src",
-        "noImplicitReturns": true,
-        "noImplicitThis": true,
         "noImplicitAny": true,
-        "strictNullChecks": true
     },
 }

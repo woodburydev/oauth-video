@@ -20,7 +20,7 @@ passport-local -> Local Authentication Strategy with Passport
 passport-twitter-oauth2 -> Twitter Authentication Strategy with Passport 
 passport-github -> Github Authentication With Passport
 
-Dev Dependencies (Only Needed when Writing the Code [Not Required In Production])
+Dev Dependencies (Only Needed when Writing the Code [Not Required In Production]):
 
 @types/bcryptjs
 @types/cors

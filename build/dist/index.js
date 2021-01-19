@@ -59,12 +59,17 @@ mongoose_1.default.connect("" + process.env.START_MONGODB + process.env.MONGODB_
 });
 // Middleware
 app.use(express_1.default.json());
-app.use(cors_1.default({ origin: "http://localhost:3000", credentials: true }));
-app.set('trust proxy', 1); // Also didn't make any difference for me either using it or not
+app.use(cors_1.default({ origin: "https://gallant-hodgkin-fb9c52.netlify.app", credentials: true }));
+app.set("trust proxy", 1);
 app.use(express_session_1.default({
     secret: "secretcode",
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: {
+        sameSite: "none",
+        secure: true,
+        maxAge: 1000 * 60 * 60 * 24 * 7 // One Week
+    }
 }));
 app.use(passport_1.default.initialize());
 app.use(passport_1.default.session());
@@ -173,17 +178,17 @@ passport_1.default.use(new GitHubStrategy({
 app.get('/auth/google', passport_1.default.authenticate('google', { scope: ['profile'] }));
 app.get('/auth/google/callback', passport_1.default.authenticate('google', { failureRedirect: '/login', session: true }), function (req, res) {
     // Successful authentication, redirect home.
-    res.redirect('http://localhost:3000');
+    res.redirect('https://gallant-hodgkin-fb9c52.netlify.app');
 });
 app.get('/auth/twitter', passport_1.default.authenticate('twitter'));
 app.get('/auth/twitter/callback', passport_1.default.authenticate('twitter', { failureRedirect: '/login', session: true }), function (req, res) {
     // Successful authentication, redirect home.
-    res.redirect('http://localhost:3000');
+    res.redirect('https://gallant-hodgkin-fb9c52.netlify.app');
 });
 app.get('/auth/github', passport_1.default.authenticate('github'));
 app.get('/auth/github/callback', passport_1.default.authenticate('github', { failureRedirect: '/login', session: true }), function (req, res) {
     // Successful authentication, redirect home.
-    res.redirect('http://localhost:3000');
+    res.redirect('https://gallant-hodgkin-fb9c52.netlify.app');
 });
 app.get("/", function (req, res) {
     res.send("Helllo WOlrd");
@@ -191,7 +196,7 @@ app.get("/", function (req, res) {
 app.get("/getuser", function (req, res) {
     res.send(req.user);
 });
-app.get("/logout", function (req, res) {
+app.get("/auth/logout", function (req, res) {
     if (req.user) {
         req.logout();
         res.send("done");
