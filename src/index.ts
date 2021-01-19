@@ -150,13 +150,11 @@ passport.use(new GitHubStrategy({
 
 
 
-app.get('/auth/google',
-  passport.authenticate('google', { scope: ['profile'] }));
+app.get('/auth/google', passport.authenticate('google', { scope: ['profile'] }));
 
 app.get('/auth/google/callback',
-  passport.authenticate('google', { failureRedirect: '/login', session: true } ),
+  passport.authenticate('google', { failureRedirect: 'https://gallant-hodgkin-fb9c52.netlify.app', session: true }),
   function (req, res) {
-    // Successful authentication, redirect home.
     res.redirect('https://gallant-hodgkin-fb9c52.netlify.app');
   });
 
@@ -164,9 +162,8 @@ app.get('/auth/google/callback',
 app.get('/auth/twitter', passport.authenticate('twitter'));
 
 app.get('/auth/twitter/callback',
-  passport.authenticate('twitter', { failureRedirect: '/login', session: true }),
+  passport.authenticate('twitter', { failureRedirect: 'https://gallant-hodgkin-fb9c52.netlify.app', session: true }),
   function (req, res) {
-    // Successful authentication, redirect home.
     res.redirect('https://gallant-hodgkin-fb9c52.netlify.app');
   });
 
@@ -174,9 +171,8 @@ app.get('/auth/twitter/callback',
 app.get('/auth/github', passport.authenticate('github'));
 
 app.get('/auth/github/callback',
-  passport.authenticate('github', { failureRedirect: '/login', session: true }),
+  passport.authenticate('github', { failureRedirect: 'https://gallant-hodgkin-fb9c52.netlify.app', session: true }),
   function (req, res) {
-    // Successful authentication, redirect home.
     res.redirect('https://gallant-hodgkin-fb9c52.netlify.app');
   });
 
@@ -190,7 +186,7 @@ app.get("/getuser", (req, res) => {
   res.send(req.user);
 })
 
-app.get("/auth/logout", (req,res) => {
+app.get("/auth/logout", (req, res) => {
   if (req.user) {
     req.logout();
     res.send("done");
