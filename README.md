@@ -14,9 +14,9 @@ When deploying this code ensure that you fill out the ENVIORNMENT variables when
 
 Ensure *ALL* Auth providers match your respective backend endpoints:
 
-Google -> https://console.developers.google.com/apis/dashboard
-Twitter -> https://developer.twitter.com/en/portal/dashboard
-Github -> https://github.com/settings/developers
+* Google -> https://console.developers.google.com/apis/dashboard
+* Twitter -> https://developer.twitter.com/en/portal/dashboard
+* Github -> https://github.com/settings/developers
 
 ## For Development:
 
