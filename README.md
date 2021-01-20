@@ -20,16 +20,13 @@ Github -> https://github.com/settings/developers
 
 ## For Development:
 
-Switch to "Development" branch (git rebase -b Development)
-Fill out .env file with your secrets
-Make sure all auth providers are setup for http://localhost:4000
-Start ("yarn run dev")
+* Switch to "Development" branch (git rebase -b Development)
+* Fill out .env file with your secrets
+* Make sure all auth providers are setup for http://localhost:4000
+* Start ("yarn run dev")
 
 ## For Production:
 
-Switch to main branch (git rebase -b main)
-Fill out .env file with your secrets
-Make sure all auth providers are setup for your heroku app you made
-
-If you are building this locally, ensure you make a file called .env and fill out the variables such as I have done in the youtube video, and make sure 
-you are redirecting to your front-end successfully after authentication.
+* Switch to main branch (git rebase -b main)
+* Fill out .env file with your secrets
+* Make sure all auth providers are setup for your heroku app you made
