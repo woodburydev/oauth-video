@@ -19,26 +19,20 @@ mongoose.connect(`${process.env.START_MONGODB}${process.env.MONGODB_USERNAME}:${
   useNewUrlParser: true,
   useUnifiedTopology: true
 }, () => {
-  console.log("Connected to mongoose successfully")
+  console.log("Connected to mongoose successfully");
 });
 
 // Middleware
 app.use(express.json());
-app.use(cors({ origin: "https://gallant-hodgkin-fb9c52.netlify.app", credentials: true }))
+app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 
-app.set("trust proxy", 1);
 
 app.use(
   session({
     secret: "secretcode",
     resave: true,
     saveUninitialized: true,
-    cookie: {
-      sameSite: "none",
-      secure: true,
-      maxAge: 1000 * 60 * 60 * 24 * 7 // One Week
-    }
-  }))
+}));
 
 
 app.use(passport.initialize());
@@ -153,27 +147,27 @@ passport.use(new GitHubStrategy({
 app.get('/auth/google', passport.authenticate('google', { scope: ['profile'] }));
 
 app.get('/auth/google/callback',
-  passport.authenticate('google', { failureRedirect: 'https://gallant-hodgkin-fb9c52.netlify.app', session: true }),
+  passport.authenticate('google', { failureRedirect: 'http://localhost:3000', session: true }),
   function (req, res) {
-    res.redirect('https://gallant-hodgkin-fb9c52.netlify.app');
+    res.redirect('http://localhost:3000');
   });
 
 
 app.get('/auth/twitter', passport.authenticate('twitter'));
 
 app.get('/auth/twitter/callback',
-  passport.authenticate('twitter', { failureRedirect: 'https://gallant-hodgkin-fb9c52.netlify.app', session: true }),
+  passport.authenticate('twitter', { failureRedirect: 'http://localhost:3000', session: true }),
   function (req, res) {
-    res.redirect('https://gallant-hodgkin-fb9c52.netlify.app');
+    res.redirect('http://localhost:3000');
   });
 
 
 app.get('/auth/github', passport.authenticate('github'));
 
 app.get('/auth/github/callback',
-  passport.authenticate('github', { failureRedirect: 'https://gallant-hodgkin-fb9c52.netlify.app', session: true }),
+  passport.authenticate('github', { failureRedirect: 'http://localhost:3000', session: true }),
   function (req, res) {
-    res.redirect('https://gallant-hodgkin-fb9c52.netlify.app');
+    res.redirect('http://localhost:3000');
   });
 
 
