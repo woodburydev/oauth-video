@@ -10,6 +10,8 @@ The video can be found here: https://www.youtube.com/watch?v=cD17CYA1dck&ab_chan
 
 This code is ready to be deployed to Heroku (it is production ready on the main branch)
 
+Dependency list and explanation for each item -> https://github.com/woodburydev/oauth-video/blob/main/notes.txt
+
 When deploying this code ensure that you fill out the ENVIORNMENT variables when deploying, so that the application runs.
 
 Ensure *ALL* Auth providers match your respective backend endpoints:
