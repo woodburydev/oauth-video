@@ -73,8 +73,7 @@ passport.use(new GoogleStrategy({
 
         await newUser.save();
         cb(null, newUser);
-      }
-      cb(null, doc);
+      } else cb(null, doc);
     })
 
   }));
@@ -102,8 +101,7 @@ passport.use(new TwitterStrategy({
 
         await newUser.save();
         cb(null, newUser);
-      }
-      cb(null, doc);
+      } else cb(null, doc);
     })
 
   }
@@ -134,8 +132,7 @@ passport.use(new GitHubStrategy({
 
         await newUser.save();
         cb(null, newUser);
-      }
-      cb(null, doc);
+      } else cb(null, doc);
     })
 
   }
